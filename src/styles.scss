@@ -6,10 +6,12 @@
   padding: 0;
   font-family: roboto;
   font-weight: 400;
+  color: white;
 }
 
 body {
   background: $primary-background-color;
+  background-attachment: fixed;
 }
 
 //Classes
