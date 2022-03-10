@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-todo-input-add-itens',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoInputAddItensComponent implements OnInit {
 
+  @Output() public emitItemTaskList = new EventEmitter();
+
+  public addItemTaskList: string = "";
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  public submitItemTaksList() {
+    this.addItemTaskList = this.addItemTaskList.trim();
+
+    if(this.addItemTaskList){
+      this.emitItemTaskList.emit(this.addItemTaskList)
+      this.addItemTaskList = "";
+      return
+    }
+    alert("O campo precisa ser preenchido para adicionar uma tarefa.")
+  }
 }
